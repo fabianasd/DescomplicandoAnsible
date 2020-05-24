@@ -1,0 +1,7 @@
+---
+# vars file for install-monit-tools
+url_repo_helm: https://kubernetes-charts.storage.googleapis.com
+# Não consegue criar o customResource
+# Bug do Helm3, não consegue crair o custom resource automaticamente no Kubernetes e erros são gerados
+# Só é possível criar se o comando for feito manualmente
+deploy_prometheus: "--set prometheusOperator.createCustomResource=false meu-querido-prometheus stable/prometheus-operator"
