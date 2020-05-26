@@ -24,12 +24,12 @@
     - { src: 'service_app.yml', dest: '/opt/giropops/service_app.yml' }
   register: copiando_service_file
 
+  # k8s:
+  #   state: present
+  #   namespace: default
+  #   src: "{{ destFileV1 }}"
 - name: Criando o deployment da app Giropops
-  # shell: kubectl apply -f {{ destFileV1 }}
-  k8s:
-    state: present
-    namespace: default
-    src: "{{ destFileV1 }}"
+  shell: kubectl apply -f {{ destFileV1 }}
   register: deploy_app
 
 - name: Criando o Service da App Giropops
