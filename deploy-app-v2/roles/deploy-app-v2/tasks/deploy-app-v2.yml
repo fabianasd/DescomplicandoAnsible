@@ -27,13 +27,14 @@
     mode: 0644
   register: copiando_deploy_app_v2
 
-# Como se fosse: kubectl create -f {{ destFileV2 }}
+  # k8s:
+  #   state: present
+  #   namespace: default
+  #   src: "{{ destFileV2 }}"
+# Como se fosse: 
 - name: Deploy da app-v2
-  k8s:
-    state: present
-    namespace: default
-    src: "{{ destFileV2 }}"
-
+  shell: kubectl create -f {{ destFileV2 }}
+  
 # Dentro do arquivo já terá o número de réplicas
 - name: Scale down da app-v1
   k8s:

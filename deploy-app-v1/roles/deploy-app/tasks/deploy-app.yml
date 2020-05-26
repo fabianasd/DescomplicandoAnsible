@@ -32,10 +32,10 @@
   shell: kubectl apply -f {{ destFileV1 }}
   register: deploy_app
 
+  # k8s:
+  #   state: present
+  #   namespace: default
+  #   src: "{{ serviceAppFile }}"
 - name: Criando o Service da App Giropops
-  # shell: kubectl apply -f /opt/giropops/service_app.yml
-  k8s:
-    state: present
-    namespace: default
-    src: "{{ serviceAppFile }}"
+  shell: kubectl apply -f /opt/giropops/service_app.yml
   register: deploy_svc_app
